@@ -1,0 +1,50 @@
+<!-- Control flow with <% %>
+Escaped output with <%= %> (escape function configurable)
+Unescaped raw output with <%- %>
+Newline-trim mode ('newline slurping') with -%> ending tag
+Whitespace-trim mode (slurp all whitespace) for control flow with <%_ _%>
+Custom delimiters (e.g. [? ?] instead of <% %>) -->
+
+    <!-- <% if(listTitle === "sunday"){ %>
+        <h1 style="color: red;"> <%=listTitle%> !</h1>
+        <% } else if(listTitle === "monday"){ %>
+                <h1 style="color: green;"><%=listTitle%> !</h1>
+    <% } else {%>
+    <h1 style="color: blue;"><%=listTitle%> !</h1>
+    <% }%> -->
+
+
+<%- include("header") -%>
+
+    <div class="box" id="heading">
+          <h1><%=listTitle%></h1>
+    </div>
+
+
+    <div class="box">
+            <%  for(var i=0;i< newListItems.length; i++){ %>
+                  <div class="item">
+                    <input type="checkbox" style="width: 20px; height: 20px;">
+                        <p><%= newListItems[i]  %></p>
+                  </div>
+              <%}%>
+
+
+              <form class="item" action="/" method="post">
+                <input type="text" name="newItem" id="myInput" autofocus required placeholder="New Item" autocomplete="off">
+                <button type="submit" id="myBtn" name="list" value="<%=listTitle%>">+</button>
+            </form>
+    </div>
+
+
+    <script>
+        var input = document.getElementById("myInput");
+        input.addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn").click();
+          }
+        });
+    </script>
+
+<%- include("footer") -%>
