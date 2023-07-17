@@ -43,6 +43,6 @@ app.get("/about", function(req,res){
 res.render("about");
 });
 
-app.listen(3000, function(){ // port is running on port 3000
+app.listen(8080, function(){ // port is running on port 3000
     console.log("Port is running on port 3000");
 });
